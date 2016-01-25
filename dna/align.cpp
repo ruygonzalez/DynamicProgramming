@@ -23,12 +23,11 @@ struct align_result {
     int score;      // score of this alignment
     string inst;    // instruction on how to align the inputs
 
-    align_result(int s, string i){
-      // constructor with values
+    align_result(int s, string i) {
         this->score = s;
         this->inst = i;
     }
-    align_result(){
+    align_result() {
         this->score = 0;
         this->inst = "";
     }
@@ -42,8 +41,8 @@ typedef unordered_map<string, align_result> memo_type;
  * @brief Function takes two strings, s and t, and produces an align_result
  * of the highest alignment score and its corresponding instruction str.
  */
-align_result align(string s, string t, memo_type &memo){
-  // if this result is memoized, use recorded result
+align_result align(string s, string t, memo_type &memo) {
+    // if this result is memoized, use recorded result
     string key = s + "," + t;
     if (memo.count(key) > 0){
       return memo[key];
@@ -65,25 +64,27 @@ align_result align(string s, string t, memo_type &memo){
 /**
  * @brief Wrapper function to print the results of align
  */
-void DNA_align(string s, string t){
-    cout << endl<<"Calling DNA align on strings " << s <<", "<< t<< endl;
+void DNA_align(string s, string t) {
+    cout << endl << "Calling DNA align on strings " << s << ", " << t << endl;
 
     // create the memoization system
     memo_type memo;
 
-    align_result answer = align(s,t, memo);
-    string ans =answer.inst;
+    align_result answer = align(s, t, memo);
+    string ans = answer.inst;
 
     // Printing section
-    string line1 = "";      // line where string s will be printed, spaces inserted
-    string line2 = "";      // line where string t will be printed, spaces inserted
-    string line3 = "";      // description of the relationship between s and t here (* | s t)
+    // line where string s will be printed, spaces inserted
+    string line1 = "";
+    // line where string t will be printed, spaces inserted
+    string line2 = "";
+    // description of the relationship between s and t here (* | s t)
+    string line3 = "";
 
     int j = 0;      // running index in s
     int k = 0;      // running index in t
 
-    for (int m = 0; m< ans.length(); m++){
-
+    for (unsigned int m = 0; m < ans.length(); m++) {
         // i is the next element in our instruction string ans
         string i = ans.substr(m, 1);
 
@@ -119,7 +120,7 @@ void DNA_align(string s, string t){
 }
 
 int main(){
-  // some test cases to begin with
+    // some test cases to begin with
     DNA_align("",   "a");
     DNA_align("b",  "");
     DNA_align("a", "a");
