@@ -382,16 +382,6 @@ above and one pixel to the left, and directly above and one pixel
 to the right. <b>Remember edge conditions. Corners only have two pixels
 above and adjacent to them.</b></p>
 
-<p>To test your implementation with a GUI, run <span class="code">make</span>
-in the <span class="code">seamcarve/</span> directory, then run
-<span class="code">./bin/seamcarve images/SOME_IMAGE.bmp</span>. Replace
-<span class="code">SOME_IMAGE.bmp</span> with one of the images provided in the
-<span class="code">images/</span> directory; you should test with each of the
-three images. You can switch between image and energy views by pressing "i" and
-"e", respectively; pressing "f" finds a seam with your function, and pressing
-the space bar removes a seam. If your seam intersects many white areas in the
-"energy" view, you may be doing something wrong.</p>
-
 <p><div class="points easy">4</div>Explain, in your own words, how this
 algorithm would be implemented recursively (i.e. state the base case
 and the recursive step). Furthermore, state the complexity of the
@@ -434,6 +424,13 @@ for (int i = 0; i < w; i++)
     delete[] arr[i];
 delete[] arr;
 </pre>
+
+<p>To test your implementation with a GUI, run <span class="code">./bin/seamcarve images/SOME_IMAGE.bmp</span>, replacing <span class="code">SOME_IMAGE.bmp</span> with one of the images
+provided in the <span class="code">images/</span> directory; you should test
+with each of the three images. You can switch between image and energy views by
+pressing "i" and "e", respectively; pressing "f" finds a seam with your function,
+and pressing the space bar removes a seam. If your seam intersects many white
+areas in the "energy" view, you may be doing something wrong.</p>
 
 <h2>Notes and hints</h2>
 
