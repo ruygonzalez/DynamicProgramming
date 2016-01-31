@@ -118,7 +118,7 @@ void DNA_align(string s, string t) {
         }
     }
     cout << line1 << endl << line2 << endl << line3 << endl;
-    cout << "Score for this alignment:" << score << endl;
+    cout << "Score for this alignment: " << score << endl;
 }
 
 int main(){
