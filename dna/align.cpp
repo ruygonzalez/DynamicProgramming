@@ -72,6 +72,7 @@ void DNA_align(string s, string t) {
 
     align_result answer = align(s, t, memo);
     string ans = answer.inst;
+    int score = answer.score;
 
     // Printing section
     // line where string s will be printed, spaces inserted
@@ -117,6 +118,7 @@ void DNA_align(string s, string t) {
         }
     }
     cout << line1 << endl << line2 << endl << line3 << endl;
+    cout << "Score for this alignment: " << score << endl;
 }
 
 int main(){
