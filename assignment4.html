@@ -295,7 +295,7 @@ intensity of each pixel of the saliency map is a measure of how much
 saliency map correspond to higher energy areas of the original image, so
 they have a higher cost than low-energy (darker) areas.</p>
 
-<p>To determine the lowest-cost path, we need to create a cost matrix
+<p>To determine the lowest-cost path, we create a cost matrix
 from the saliency map. The first row of the cost matrix is simply the
 first row of the saliency map (since there are no pixels above it). For
 each subsequent row, we examine the pixel directly above, directly above
@@ -385,7 +385,7 @@ above and adjacent to them.</b></p>
 <p><div class="points easy">4</div>Answer the following analysis questions in a file <span class="code">seamcarve/recursive.txt</span>.
 <ol>
     <li>What part of the above algorithm uses dynamic programming?</li>
-    <li>This algorithm can be implemented recursively, without dynamic programming. Explain how.</li>
+    <li>The seam-finding algorithm can be implemented recursively, without dynamic programming. Explain how.</li>
     <li>For an NxN image, what is the complexity of the recursive algorithm without dynamic programming? State the complexity in big-O notation, as a function of N.</li>
     <li>Using the recursive algorithm without dynamic programming, how long would it take to find a seam on a 50x50 image if 1 billion computations were made per second? State a reasonable lower bound. Hint: The answer should be huge.</li>
 </ol>
