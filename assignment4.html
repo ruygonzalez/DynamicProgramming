@@ -380,18 +380,17 @@ cost pixel in the last row. From there, we can follow our cost matrix
 up by choosing the minimum cost from the pixel directly above, directly
 above and one pixel to the left, and directly above and one pixel
 to the right. <b>Remember edge conditions. Corners only have two pixels
-above and adjacent to them.</b> The list of pixel x-values can be used
-to remove the seam from the image. Visually, you can check your
-seam-finding algorithm from the energy view in the GUI provided; if your
-seam intersects many white areas, you may be doing something wrong.</p>
+above and adjacent to them.</b></p>
 
-<p>You have been given a simple GUI that displays the image specified
-by the macro <span class="code">IMG_NAME</span> in
-<span class="code">seamcarve/src/SeamCarveApp.h</span>; you should test your
-implementation on all three images provided for you. You can switch between
-image and energy views by pressing "i" and "e", respectively; pressing
-"f" finds a seam with your function, and pressing the space bar removes
-a seam.</p>
+<p>To test your implementation with a GUI, run <span class="code">make</span>
+in the <span class="code">seamcarve/</span> directory, then run
+<span class="code">./bin/seamcarve images/SOME_IMAGE.bmp</span>. Replace
+<span class="code">SOME_IMAGE.bmp</span> with one of the images provided in the
+<span class="code">images/</span> directory; you should test with each of the
+three images. You can switch between image and energy views by pressing "i" and
+"e", respectively; pressing "f" finds a seam with your function, and pressing
+the space bar removes a seam. If your seam intersects many white areas in the
+"energy" view, you may be doing something wrong.</p>
 
 <p><div class="points easy">4</div>Explain, in your own words, how this
 algorithm would be implemented recursively (i.e. state the base case
