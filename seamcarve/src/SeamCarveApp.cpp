@@ -558,7 +558,7 @@ int main(int argc, char* argv[])
 {
     if (argc != 2)
     {
-        cout << "usage: bin/seamcarve images/img.bmp" << endl;
+        cout << "usage: ./bin/seamcarve images/img.bmp" << endl;
         return -1;
     }
 
