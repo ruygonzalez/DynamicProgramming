@@ -382,13 +382,13 @@ above and one pixel to the left, and directly above and one pixel
 to the right. <b>Remember edge conditions. Corners only have two pixels
 above and adjacent to them.</b></p>
 
-<p><div class="points easy">4</div>Explain, in your own words, how this
-algorithm would be implemented recursively (i.e. state the base case
-and the recursive step). Furthermore, state the complexity of the
-recursive version of the algorithm for an NxN image. How long would it
-take to find a seam on a 50x50 image if 1billion computations were made
-per second? Save your responses in a file
-<span class="code">seamcarve/recursive.txt</span>.</p>
+<p><div class="points easy">4</div>Answer the following analysis questions in a file <span class="code">seamcarve/recursive.txt</span>.
+<ol>
+    <li>What part of the above algorithm uses dynamic programming?</li>
+    <li>This algorithm can be implemented recursively, without dynamic programming. Explain how.</li>
+    <li>For an NxN image, what is the complexity of the recursive algorithm without dynamic programming? State the complexity in big-O notation, as a function of N.</li>
+    <li>Using the recursive algorithm without dynamic programming, how long would it take to find a seam on a 50x50 image if 1 billion computations were made per second? State a reasonable lower bound. Hint: The answer should be huge.</li>
+</ol>
 
 <p><div class="points easy">5</div>Write the function
 <span class="code">DoSeamCarve</span> in
