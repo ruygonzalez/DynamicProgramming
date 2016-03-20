@@ -47,10 +47,10 @@ using namespace std;
 SeamCarveApp::SeamCarveApp()
 {
     /* Do SDL initialization. */
-    screen = NULL;
-    image = NULL;
-    energy = NULL;
-    trace = NULL;
+    screen = nullptr;
+    image = nullptr;
+    energy = nullptr;
+    trace = nullptr;
     nseams = 0;
     running = true;
 }
@@ -114,14 +114,14 @@ bool SeamCarveApp::OnInit(char *imgname)
     /* Load bitmap and set size of main screen. */
     temp = SDL_LoadBMP(imgname);
 
-    if (temp == NULL)
+    if (temp == nullptr)
     {
         return false;
     }
 
     screen = SDL_SetVideoMode(temp->w, temp->h, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 
-    if(screen == NULL)
+    if(screen == nullptr)
     {
         return false;
     }
@@ -133,7 +133,7 @@ bool SeamCarveApp::OnInit(char *imgname)
     energy = SDL_CreateRGBSurface(SDL_SWSURFACE, image->w, image->h, 32,
         0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
 
-    if (energy == NULL)
+    if (energy == nullptr)
     {
         return false;
     }
@@ -142,7 +142,7 @@ bool SeamCarveApp::OnInit(char *imgname)
     trace = SDL_CreateRGBSurface(SDL_SWSURFACE, image->w, image->h, 32,
         0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
 
-    if (trace == NULL)
+    if (trace == nullptr)
     {
         return false;
     }
@@ -222,7 +222,7 @@ void SeamCarveApp::OnRender()
     dest.w = image->w;
     dest.h = image->h;
 
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+    SDL_FillRect(screen, nullptr, SDL_MapRGB(screen->format, 0, 0, 0));
     SDL_BlitSurface(cursurf, &src, screen, &dest);
     SDL_BlitSurface(trace, &src, screen, &dest);
     SDL_Flip(screen);

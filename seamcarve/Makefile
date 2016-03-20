@@ -1,7 +1,7 @@
 CC = g++
 LD = g++
 DOCSGEN = doxygen
-CFLAGS = -Wall -ansi -pedantic -ggdb `sdl-config --cflags` -std=c++0x
+CFLAGS = -std=c++11 -Wall -pedantic -ggdb `sdl-config --cflags`
 SDLLIBS = `sdl-config --libs`
 SRCDIR = src
 OBJDIR = obj
