@@ -45,6 +45,9 @@
  * @param w Width of the saliency map
  *
  * @param h Height of the saliency map
+ *
+ * @return An array of the x-coordinates of the seam, starting from the top of
+ * the image.
  */
 unsigned int *DoSeamCarve(unsigned int **smap, int w, int h)
 {
