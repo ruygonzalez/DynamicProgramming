@@ -167,7 +167,7 @@ Week 4 assignment module on Moodle.</p>
 Ask a TA if you need help retrieving these packages, or if these packages
 appear to be missing from the CS cluster.</p>
 
-<h2>Assignment (20 points)</h2>
+<h2>Assignment (21 points)</h2>
 
 <p>For this assignment you will be implementing the DNA alignment and
 seam carving algorithms described below.</p>
@@ -177,6 +177,51 @@ leaving the file structure intact. You submission should be your base
 directory, zipped, with <i>all</i> source files included. You do not need to
 include binaries or object files. As always, be sure that the code
 you submit compiles! Makefile targets have been provided for you.</div>
+
+<h3><div class="points easy">1</div>Part -1: Warmup Question</h3>
+<div class="hint">This is a good example of a software engineering
+interview question. It might be worthwhile to check out...</div>
+<p>Consider the following mapping of letters to numbers,</p>
+<div class="code">
+    a -> 1
+    b -> 2
+    c -> 3
+    ...
+    y -> 25
+    z -> 26
+</div>
+
+<p>Now, with this mapping, we can map any string of letters to a number by
+mapping to each number and concatenating. Here are a few examples </p>
+<div class="code">
+    abc -> 123
+    cba -> 321
+    zyx -> 262524
+    ...
+</div>
+
+<p>Notice, however, some numbers don't ever get mapped to. For example, there
+is no string that can map to the number <span class="code">100</span>.</p>
+
+<h4> Your Task </h4>
+Write a function that takes in a number <span class="code">X</span> and
+returns <span class="code">true</span> if there is a string
+<span class="code">S</span> that maps to
+<span class="code">X</span> and returns <span class="code">false</span> if
+there is no such string <span class="code">S</span>.
+Here are some basic test cases,
+<div class="code">
+    f(123)  -> True
+    f(321)  -> True
+    f(1000) -> False
+    f(100)  -> False
+    f(10)   -> True
+    f(1010) -> True
+    f(3010) -> False
+</div>
+
+<p>Place your solution inside a folder called
+<span class="code">warmup</span>.</p>
 
 <h3>Part 1: DNA alignment</h3>
 
