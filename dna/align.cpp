@@ -37,6 +37,15 @@ struct align_result {
 // with its output for memoization
 typedef unordered_map<string, align_result> memo_type;
 
+/** 
+ * Helper function, returns align_result with greater score
+ */
+align_result getmax(align_result a, align_result b){
+	if(a.score > b.score)
+		return a;
+	return b;
+}
+
 /**
  * @brief Function takes two strings, s and t, and produces an align_result
  * of the highest alignment score and its corresponding instruction str.
@@ -47,19 +56,61 @@ align_result align(string s, string t, memo_type &memo) {
     if (memo.count(key) > 0){
       return memo[key];
     }
-
-    /*
-      TODO: calculate the highest score for an alignment of s and t
-      - Base cases: s or t is empty
-      - Recursive calls
-     */
-
-    /* Before you return your calculated  align_result object,
-       memoize it like so:*/
-    align_result answer;
-    memo[key] = answer;
-    return answer;
+	int slen = s.size();
+	int tlen = t.size();
+	align_result answer;
+	if (slen == 0){
+		answer.score = (tlen - slen) * GAP_SCORE;
+		answer.inst = "";
+		for(int i = 0; i < (tlen - slen); i++)
+			answer.inst += "t";
+		memo[key] = answer;
+		return answer;
+    }
+	if (tlen == 0){
+		answer.score = (slen - tlen) * GAP_SCORE;
+		answer.inst = "";
+		for(int i = 0; i < (slen - tlen); i++)
+			answer.inst += "s";
+		memo[key] = answer;
+		return answer;
+    }
+	string s1 = s.substr(0,1);
+	string t1 = t.substr(0,1);
+	if (s1 == t1 && s1 != "-"){
+		answer.score = MATCHING;
+		answer.inst = "|";
+	}
+	else if (s1 == "-" || s1 == " "){
+		answer.score = GAP_SCORE;
+		answer.inst = "t";
+    }
+	else if (t1 == "-" || t1 == " "){
+		answer.score = GAP_SCORE;
+		answer.inst = "s";
+    }
+	else{
+		answer.score = MISMATCH;
+		answer.inst = "*";
+	}
+	if (slen > 1)
+		s = s.substr(1);
+	else
+		s = "";
+	if (tlen > 1)
+		t = t.substr(1);
+	else
+		t = "";
+	string sa = "-" + s;
+	string ta = "-" + t;
+	align_result temp1 = getmax(align(sa, t, memo), align(s, ta, memo));
+	align_result temp = getmax(temp1, align(s, t, memo));
+	answer.score += temp.score;
+	answer.inst += temp.inst;
+	memo[key] = answer;
+	return answer;
 }
+
 
 /**
  * @brief Wrapper function to print the results of align
@@ -69,8 +120,10 @@ void DNA_align(string s, string t) {
 
     // create the memoization system
     memo_type memo;
-
-    align_result answer = align(s, t, memo);
+	string sa = "-" + s;
+	string ta = "-" + t;
+	align_result temp1 = getmax(align(sa, t, memo), align(s, ta, memo));
+	align_result answer = getmax(temp1, align(s, t, memo));
     string ans = answer.inst;
     int score = answer.score;
 
@@ -124,11 +177,32 @@ void DNA_align(string s, string t) {
 int main(){
     // some test cases to begin with
     DNA_align("",   "a");
-    DNA_align("b",  "");
+	cout << "Supposed to be 't' and score: -5" << endl;
+	DNA_align("a", "");
+	cout << "Supposed to be 's' and score: -5" << endl;
+	DNA_align("a","b");
+	cout << "Supposed to be '*' and score: -1" << endl;
+    //DNA_align("b",  "");
     DNA_align("a", "a");
-    DNA_align("b",  "a");
+	cout << "Supposed to be '|' and score: 2" << endl;
+    //DNA_align("b",  "a");
     DNA_align("b",  "ba");
+    cout << "Supposed to be '|t' and score: -3" << endl;
+	DNA_align("b", "ab");
+	cout << "Supposed to be 't|' and score: -3" << endl;
     DNA_align("ab", "ba");
+	cout << "Supposed to be '**' and score: -2" << endl;
     DNA_align("ab", "b");
+	cout << "Supposed to be 's|' and score: -3" << endl;
+	DNA_align("ba", "b");
+	cout << "Supposed to be '|s' and score : -3" << endl;
+	DNA_align("abc", "ac");
+	cout << "Supposed to be '|s|' and score: -1" << endl;
+	DNA_align("abc", "adc");
+	cout << "Supposed to be '|*|' and score: 3" << endl;
+	DNA_align("abracadabra", "avada kedavra");
+	cout << "Supposed to be '|**t|**t||*||' and score: -3" << endl;
+	DNA_align("ACTGGCCGT", "TGACGTAA");
+	DNA_align("gttaacggat tgtgttatcc cgggaatgta gaaaatctag aagaattaag gtcacttttt agttctgctc 	ggtcttatca gaggatcctg attttcccag acacaatctg gaatgtgtct tacagtggga caagcaaagc atgttcagat tcattctaca gaagcatgag atggttgact caaaagaaca acgcttaccc tattcaagac gcccaatac", "gttaacggat tgtgttatcc cgggactgta gaaaatctag aagaattaag gtcacttttt agttctgctc ggtcttatca gaggatcctg attttcccag acacaatctg gaatgtgtct tacagtggga caagcaaagc atgttcggat tcattctaca gaagcatgag atggttgact caaaggaaca atgcttaccc tattcaagac gcccaatac");
     return 0;
 }

@@ -1,0 +1,30 @@
+Sequence Types: Protein Coding Region
+Sequence #1:
+1 gttaacggat tgtgttatcc cgggaatgta gaaaatctag aagaattaag gtcacttttt
+61 agttctgctc ggtcttatca gaggatcctg attttcccag acacaatctg gaatgtgtct
+121 tacagtggga caagcaaagc atgttcagat tcattctaca gaagcatgag atggttgact
+181 caaaagaaca acgcttaccc tattcaagac gcccaatac
+
+Origin:
+Influenza A virus (A/chicken/Banten/M92_16/2017(H9N2)) segment 4 hemagglutinin (HA) gene, partial cds
+H9N2 Influenza Virus transmitted by Humans found in Banten, Indonesia
+
+Source:
+https://www.ncbi.nlm.nih.gov/nuccore/MF164896
+
+Sequence #2:
+1 gttaacggat tgtgttatcc cgggactgta gaaaatctag aagaattaag gtcacttttt
+61 agttctgctc ggtcttatca gaggatcctg attttcccag acacaatctg gaatgtgtct
+121 tacagtggga caagcaaagc atgttcggat tcattctaca gaagcatgag atggttgact
+181 caaaggaaca atgcttaccc tattcaagac gcccaatac
+
+Origin:
+Influenza A virus (A/chicken/West Java/M92_20/2017(H9N2)) segment 4 hemagglutinin (HA) gene, partial cds
+H9N2 Influenza Virus (originally Avian) transmitted by Humans found in West Java, Indonesia
+
+Source:
+https://www.ncbi.nlm.nih.gov/nuccore/MF164900
+
+Significance:
+Aligning these two strands of protein DNA sequences of an avian flu virus found in different parts of Indonesia in 2017 is significant because although the two sequences are very similar (which makes sense because it's the same strand of flu), differences between the two strands can signifdt mutations, and point deletions/insertions that can be useful when trying to make a vaccine for the flu virus, and could mean possible resistance gained against antibiotics if the sequences were taken at different times. 
+

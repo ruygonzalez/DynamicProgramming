@@ -1,0 +1,17 @@
+1. Dynamic programming is used in creating the cost table as it eliminates redundant calculations. Using memoization, the only values stored are the costs of the minimum path to get to each point, instead of the costs of all possible paths being calculated and then the minimum one being found. Also instead of having to backtrace to all the coordinates, to find the cost to get to a point, you just have to add the value to point above it that has the least cost minimum path to get to it. 
+
+2. Using Recursion you can find all possible paths going down from each pixel at the top row. For example, you can have:
+	int findcost(Point x){
+		IF x is in last row THEN
+			RETURN Saliency value of x
+		ENDIF
+		RETURN x.value + minimum(findcost( <=3 possible points below it ))
+	}
+
+3. Complexity of function recursion without Dynamic Programming: O(N*3^N) for an NxN image because there aere <=3 possible paths down from each point in a row and there are N rows and N columns. 
+
+4.  (50 x 3^50 calculations)/ (1 x 10^9 calulations per second) = 3.589 x 10^16 seconds, with a reasonable lower bound of 1.1 x 10^9 years or 3.5 x 10^16 seconds. 
+
+5. Using Dynamic Programming, the complexity is O(N^2) because there are NxN cells and only one calculation (the minimum path to get there) for each cell. 
+	
+6. (50^2 calculations) / (1 x 10^9 calculations per second) = 1 / (400, 000) seconds

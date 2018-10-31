@@ -1,0 +1,57 @@
+We can break up any problem into four subproblems/cases:
+	(1) IF both strings are of length 0, then stop recursion
+			RETURN an align_result with score 0 and an empty string for instructions
+	(2) If one string is of length 0, then stop recursion
+			Add Gaps to empty string to make it the same length as the other string
+			Create align_result 
+			Edit instructions accordingly in align_result and the score
+			Score = score + (# of gaps added * gap_score) 
+			RETURN align_result
+	(3) IF we have already seen this combination of strings before, i.e. already in memo, THEN
+			RETURN memo[key], where key is s + " " + t
+		This way we use memoization to avoid unecessary/redundant recursions
+	(4) We will use recursion, to outline this, let's define this function:
+		align_result align(string s, string t, memo_type &memo){
+
+			You have three cases:
+
+			IF first letter in s == first letter in t THEN
+				align_result.score += match_score;
+				align_result.inst += "|";
+
+			ELSE IF one of the strings has a gap (either - or space) THEN
+				align_result.score += gap_score;
+				IF s has a gap THEN
+					align_result.inst += "t";
+				ELSE
+					align_result.inst += "s";
+			
+			ELSE (this is the case where there's a mismatch)
+				align_result.score += mismatch_score;
+				align_result.inst += "*";
+
+
+			Now shorten your strings since their first characters are already accounted for
+			s = s.substring(1);
+			t = t.substring(1);
+			
+			Make alternate strings where a gap is inserted
+			string sa = "-" + s;
+			string ta = "-" + t;
+
+			Use recursion to find the scores from these three cases and
+			define max to be a helper function that returns align_result with greater score:
+
+			align_result temp = max((max(align(sa, t, memo), align(s, ta, memo)), align(s,t, memo));
+			current align_result.score += temp.score;
+			current align_result.inst += temp.inst;
+			memo[key] = current align_result;
+ 			RETURN memo[key];
+		}
+
+		align_result max( align_result a, align_result b){
+			IF a.score > b.score THEN
+				RETURN a;
+			RETURN b;
+		}
+NOTE: Also make alternate strings where the original string has gaps in the first or second string, or no gaps to start off and make the answer the one with the highest align_result score
